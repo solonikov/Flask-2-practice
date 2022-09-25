@@ -6,5 +6,37 @@
 
 # Миграции
 1. Активировать миграции: flask db init
-1. Создать миграцию: flask db migrate -m "comment"
-1. Применить миграции: flask db upgrade
+2. Создать миграцию: flask db migrate -m "comment"
+3. Применить миграции: flask db upgrade
+
+# Ссылки
+все ссылки (гист):
+https://gist.github.com/boo-learn/738d481539239bc8408f30bab9d8312d
+
+
+
+Дублирую содержание гиста сюда:
+
+- ОСНОВНЫЕ МАТЕРИАЛЫ
+1. Теория и Задания(Гугло-диск):
+https://drive.google.com/drive/folders/1d61I6sB-UeQX0SPihrzLDiyvirGE24-2?usp=sharing
+
+- ПРОЕКТЫ КУРСА
+1. Проект: QuoteApi:
+https://github.com/boo-learn/QuoteAPi_11_09.git
+2. Проект: NoteApi:
+https://github.com/boo-learn/NoteAPi_11_09.git
+
+- ДОПОЛНИТЕЛЬНЫЕ МАТЕРИАЛЫ
+1. Телеграм группа для обсуждения(временная): https://t.me/+eYedLFVG5dszMjYy
+2. Виртуальные машины: https://drive.google.com/drive/folders/1AFK38cpP5d1FVAKcJVnx2AZDqqcDw5g4?usp=sharing
+3. API examples:
+- GitHub API: https://docs.github.com/en/rest/overview/endpoints-available-for-github-apps
+- YahooFinance: https://www.yahoofinanceapi.com/
+- PetStore: https://petstore.swagger.io/
+4. Из телеграм-чата:
+Обещанное видео: https://youtu.be/UfeZ-bPFs10
+Оно про go, но вполне универсально ("Безопасность в Golang")
+
+
+почта преподавателя: eyurchenko@specialist.ru

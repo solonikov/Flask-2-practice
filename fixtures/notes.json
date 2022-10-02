@@ -1,0 +1,15 @@
+{
+  "model": "NoteModel",
+  "data": [
+ {
+   "text": "Note for user 2",
+   "author_id": 2,
+   "private": true
+ },
+ {
+   "text": "Note for user 5",
+   "author_id": 5,
+   "private": false
+ }
+]
+}

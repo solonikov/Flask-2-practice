@@ -1,8 +1,11 @@
 from api import auth, abort, Resource, reqparse
 from api.models.note import NoteModel
+from api.models.tag import TagModel
 from api.schemas.note import NoteSchema, NoteCreateSchema
 from flask_apispec.views import MethodResource
 from flask_apispec import marshal_with, use_kwargs, doc
+from webargs import fields
+from api import db
 
 
 @doc(tags=['Notes'])
@@ -80,3 +83,20 @@ class NotesListResource(MethodResource):
         note = NoteModel(author_id=author.id, **kwargs)
         note.save()
         return note, 201
+
+
+@doc(tags=['Notes'])
+class NoteSetTagsResource(MethodResource):
+    @doc(summary="Set tags to Note")
+    @use_kwargs({"tags_id": fields.List(fields.Int())}, location=('json'))    # здесь мы делаем десериализацию прямо в этой строчке, не создавая схему десериализации (по двум причинам 1. это проще, так как у нас очень простой случай  2. вряд ли в этом месте десериализация когда-то будет меняться)
+    @marshal_with(NoteSchema)
+    def put(self, note_id, **kwargs):
+        note = NoteModel.query.get(note_id)
+        if not note:
+            abort(404, error=f"note {note_id} not found")
+        # TODO: получить все тэги по id одним запросом
+        for tag_id in kwargs["tags_id"]:
+            tag = TagModel.query.get(tag_id)
+            note.tags.append(tag)
+        db.session.commit()    # эта реализация с циклом плохая, например при добавлении 10 тэгов к 1 заметке будет выполнено 12 запросов к БД -- очень много, так что надо будет улучшить (можно сделать реализацию из 3 запросов на всю функцию)
+        return note, 200

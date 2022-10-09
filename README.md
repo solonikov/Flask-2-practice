@@ -20,6 +20,8 @@ https://gist.github.com/boo-learn/738d481539239bc8408f30bab9d8312d
 - ОСНОВНЫЕ МАТЕРИАЛЫ
 1. Теория и Задания(Гугло-диск):
 https://drive.google.com/drive/folders/1d61I6sB-UeQX0SPihrzLDiyvirGE24-2?usp=sharing
+2. Операции с тегами в терминале:
+https://pastebin.com/YkMRJeQ3
 
 - ПРОЕКТЫ КУРСА
 1. Проект: QuoteApi:

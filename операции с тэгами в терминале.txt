@@ -1,0 +1,41 @@
+In [1]: from api.models.tag import TagModel
+
+In [2]: from api.models.user import UserModel
+
+In [3]: from api.models.note import NoteModel
+
+In [4]: from api import db
+
+In [5]: note = NoteModel.query.filter_by(text="Note-2 for Ivan").one()
+
+In [12]: notes_amd = NoteModel.query.join(NoteModel.author).filter(UserModel.username=='admin    ...: ').all()
+
+In [13]: notes_amd
+Out[13]: [<NoteModel 1>, <NoteModel 2>, <NoteModel 3>]
+
+In [14]: tag_adm = TagModel.query.filter_by(name='tag-adm').one()
+
+In [15]: for note in notes_amd:
+    ...:     note.tags.append(tag_adm)
+    ...:
+
+In [16]: db.session.commit()
+
+In [19]: users = UserModel.query.all()
+
+In [20]: tag_good = TagModel.query.filter_by(name="tag-good").one()
+
+In [21]: for user in users:
+    ...:     note = user.notes.first()
+    ...:     note.tags.append(tag_good)
+    ...:
+
+In [36]: public_notes = NoteModel.query.filter_by(private=False).all()
+
+In [38]: tag_public = TagModel.query.filter_by(name="tag-public").one()
+
+In [39]: for note in public_notes:
+    ...:     note.tags.append(tag_public)
+    ...:
+
+In [40]: db.session.commit()
